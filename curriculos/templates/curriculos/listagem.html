@@ -1,0 +1,23 @@
+<h1>Currículos</h1>
+
+
+{% for c in curriculos %}
+
+<p>
+<a href="{% url 'consulta' c.id %}">
+
+{{ c.nome }}
+
+</a>
+
+-
+{{ c.email }}
+
+</p>
+
+{% endfor %}
+
+
+<a href="{% url 'cadastro' %}">
+Novo currículo
+</a>
