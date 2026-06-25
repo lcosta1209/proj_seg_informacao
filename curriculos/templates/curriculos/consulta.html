@@ -1,24 +1,48 @@
-<h1>{{curriculo.nome}}</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Detalhes</title>
+</head>
 
 
-<p>Email:
-{{curriculo.email}}
+<body>
+
+
+<h1>
+{{ curriculo.nome }}
+</h1>
+
+
+<p>
+Email:
+{{ curriculo.email }}
 </p>
 
 
 <p>
 Telefone:
-{{curriculo.telefone}}
+{{ curriculo.telefone }}
 </p>
 
 
 <p>
 Site:
-{{curriculo.site}}
+{{ curriculo.site }}
 </p>
 
 
 <p>
 Experiência:
-{{curriculo.experiencia}}
+{{ curriculo.experiencia }}
 </p>
+
+
+<a href="{% url 'listagem' %}">
+Voltar para lista
+</a>
+
+
+</body>
+
+</html>

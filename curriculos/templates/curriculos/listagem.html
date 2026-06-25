@@ -1,23 +1,48 @@
-<h1>Currículos</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lista de Currículos</title>
+</head>
+
+<body>
 
 
-{% for c in curriculos %}
+<h1>Lista de currículos</h1>
+
+
+{% for curriculo in curriculos %}
 
 <p>
-<a href="{% url 'consulta' c.id %}">
 
-{{ c.nome }}
+<a href="{% url 'consulta' curriculo.pk %}">
+
+{{ curriculo.nome }}
 
 </a>
 
--
-{{ c.email }}
+<br>
+
+{{ curriculo.email }}
 
 </p>
+
+
+{% empty %}
+
+<p>
+Nenhum currículo cadastrado.
+</p>
+
 
 {% endfor %}
 
 
-<a href="{% url 'cadastro' %}">
-Novo currículo
+<a href="{% url 'inicio' %}">
+Voltar
 </a>
+
+
+</body>
+
+</html>
