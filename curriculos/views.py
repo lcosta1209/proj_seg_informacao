@@ -14,6 +14,13 @@ def listagem(request):
         'termo': termo,
     })
 
+
+def inicio(request):
+    return render(
+        request,
+        'curriculos/inicio.html'
+    )
+
 def cadastro(request):
     if request.method == 'POST':
         form = CurriculoForm(request.POST)

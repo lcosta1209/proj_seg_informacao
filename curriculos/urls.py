@@ -6,6 +6,12 @@ urlpatterns = [
 
     path(
         '',
+        views.inicio,
+        name='inicio'
+    ),
+
+    path(
+        'curriculos/',
         views.listagem,
         name='listagem'
     ),
