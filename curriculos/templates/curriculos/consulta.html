@@ -1,48 +1,48 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-br">
 <head>
-<title>Detalhes</title>
+    <meta charset="UTF-8">
+    <title>Detalhes do Currículo</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 10px; border-bottom: 1px solid #ddd; }
+        th { background-color: #f2f2f2; width: 180px; }
+    </style>
 </head>
-
-
 <body>
 
+    <h1>{{ curriculo.nome }}</h1>
 
-<h1>
-{{ curriculo.nome }}
-</h1>
+    <table>
+        <tr>
+            <th>E-mail</th>
+            <td>{{ curriculo.email }}</td>
+        </tr>
+        <tr>
+            <th>Telefone</th>
+            <td>{{ curriculo.telefone|default:"—" }}</td>
+        </tr>
+        <tr>
+            <th>Site</th>
+            <td>
+                {% if curriculo.site %}
+                    <a href="{{ curriculo.site }}" target="_blank" rel="noopener noreferrer">
+                        {{ curriculo.site }}
+                    </a>
+                {% else %}
+                    —
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th>Experiência</th>
+            <td>{{ curriculo.experiencia }}</td>
+        </tr>
+    </table>
 
-
-<p>
-Email:
-{{ curriculo.email }}
-</p>
-
-
-<p>
-Telefone:
-{{ curriculo.telefone }}
-</p>
-
-
-<p>
-Site:
-{{ curriculo.site }}
-</p>
-
-
-<p>
-Experiência:
-{{ curriculo.experiencia }}
-</p>
-
-
-<a href="{% url 'listagem' %}">
-Voltar para lista
-</a>
-
+    <br>
+    <a href="{% url 'listagem' %}">Voltar para lista</a>
 
 </body>
-
 </html>

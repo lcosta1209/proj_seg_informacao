@@ -1,14 +1,33 @@
-<h1>Novo currículo</h1>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Currículo</title>
+</head>
+<body>
 
+    <h1>Novo Currículo</h1>
 
-<form method="POST">
+    {% if form.errors %}
+        <div>
+            <p>Corrija os erros abaixo:</p>
+            <ul>
+                {% for field in form %}
+                    {% for erro in field.errors %}
+                        <li>{{ field.label }}: {{ erro }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 
-{% csrf_token %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
 
-{{ form.as_p }}
+    <a href="{% url 'inicio' %}">Voltar</a>
 
-<button>
-Salvar
-</button>
-
-</form>
+</body>
+</html>

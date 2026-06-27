@@ -1,48 +1,49 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>Lista de Currículos</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 10px; border-bottom: 1px solid #ddd; }
+        th { background-color: #f2f2f2; }
+        a { color: #333; }
+        nav { margin-bottom: 20px; }
+        nav a { margin-right: 15px; }
+    </style>
 </head>
-
 <body>
 
+    <nav>
+        <a href="{% url 'inicio' %}">Início</a>
+        <a href="{% url 'cadastro' %}">Novo cadastro</a>
+    </nav>
 
-<h1>Lista de currículos</h1>
+    <h1>Lista de Currículos</h1>
 
-
-{% for curriculo in curriculos %}
-
-<p>
-
-<a href="{% url 'consulta' curriculo.pk %}">
-
-{{ curriculo.nome }}
-
-</a>
-
-<br>
-
-{{ curriculo.email }}
-
-</p>
-
-
-{% empty %}
-
-<p>
-Nenhum currículo cadastrado.
-</p>
-
-
-{% endfor %}
-
-
-<a href="{% url 'inicio' %}">
-Voltar
-</a>
-
+    {% if curriculos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for curriculo in curriculos %}
+                <tr>
+                    <td>{{ curriculo.nome }}</td>
+                    <td>{{ curriculo.email }}</td>
+                    <td><a href="{% url 'consulta' curriculo.pk %}">Ver detalhes</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhum currículo cadastrado.</p>
+    {% endif %}
 
 </body>
-
 </html>
